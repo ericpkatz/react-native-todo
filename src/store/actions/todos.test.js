@@ -6,6 +6,7 @@ const mockStore = configureMockStore(middlewares);
 import * as localStore from '../localStore';
 
 describe('todos (actions)', ()=> {
+
   afterEach(()=> jest.restoreAllMocks());
 
   describe('fetch todos', ()=> {
