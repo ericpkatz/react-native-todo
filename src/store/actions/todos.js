@@ -2,9 +2,7 @@ import { setItem, getItem } from '../localStore';
 const fetchTodos = ()=> {
   return async (dispatch) => {
     try {
-      const todos = await getItem('todos', [{
-        id: 1
-      }]);
+      const todos = await getItem('todos',[]);
       dispatch({ type: 'TODOS_SET', todos });
     }
     catch(ex){

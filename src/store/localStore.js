@@ -11,7 +11,7 @@ const setItem = async(key, value)=> {
 
 const getItem = async(key, _default)=> {
   try{
-    const value = await AsyncStorage.getItem('key');
+    const value = await AsyncStorage.getItem(key);
     if(value === null){
       return _default;
     }
