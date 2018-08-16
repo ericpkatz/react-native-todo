@@ -17,6 +17,7 @@ class _TodoInput extends Component{
     const { text } = this.state;
     return (
     <View style={{ flex: 1, width: '100%', paddingTop: 10, display: 'flex', flexDirection: 'row' }}>
+
       <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1, flex: 2}}
         onChangeText={(text) => this.setState({text})}
