@@ -1,4 +1,4 @@
-import { fetchTodos, createTodo, destroyTodo } from './todos';
+import { fetchTodos, createTodo, destroyTodo, clearTodos } from './todos';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 const middlewares = [ thunk ];
@@ -7,6 +7,7 @@ import * as localStore from '../localStore';
 
 describe('todos (actions)', ()=> {
   afterEach(()=> jest.restoreAllMocks());
+
   describe('fetch todos', ()=> {
     test('success', ()=> {
       jest.spyOn(localStore, 'getItem').mockImplementation(()=> Promise.resolve([ ]));
@@ -15,6 +16,20 @@ describe('todos (actions)', ()=> {
         { type: 'TODOS_SET', todos: []  },
       ];
       return store.dispatch(fetchTodos())
+        .then(()=> {
+          expect(store.getActions()).toMatchObject(expectedActions);
+        });
+    });
+  });
+
+  describe('clear todos', ()=> {
+    test('success', ()=> {
+      jest.spyOn(localStore, 'setItem').mockImplementation(()=> Promise.resolve([ ]));
+      const store = mockStore({});
+      const expectedActions = [
+        { type: 'TODOS_SET', todos: []  },
+      ];
+      return store.dispatch(clearTodos())
         .then(()=> {
           expect(store.getActions()).toMatchObject(expectedActions);
         });

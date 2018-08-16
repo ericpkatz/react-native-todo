@@ -3,6 +3,9 @@ const todosReducer = (state = [], action)=> {
     case 'TODOS_SET':
       state = action.todos;
       break;
+    case 'TODOS_CLEAR':
+      state = [];
+      break;
     case 'TODO_CREATE':
       state = [...state, action.todo ];
       break;

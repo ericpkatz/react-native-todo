@@ -10,6 +10,17 @@ const fetchTodos = ()=> {
     }
   };
 };
+const clearTodos = ()=> {
+  return async (dispatch) => {
+    try {
+      await setItem('todos',[]);
+      dispatch({ type: 'TODOS_SET', todos: [] });
+    }
+    catch(ex){
+      throw ex;
+    }
+  };
+};
 
 const createTodo = (todo)=> {
   return async (dispatch, getState) => {
@@ -44,4 +55,4 @@ const destroyTodo = (todo)=> {
   };
 };
 
-export { fetchTodos, createTodo, destroyTodo };
+export { fetchTodos, createTodo, destroyTodo, clearTodos };
